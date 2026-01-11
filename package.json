@@ -1,0 +1,106 @@
+{
+  "name": "md-editor-pro",
+  "displayName": "md-editor-pro",
+  "description": "MD Editor Pro",
+  "publisher": "luong-vu",
+  "version": "0.0.1",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richard-vu/md-editor-pro"
+  },
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "md-editor-pro.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "md-editor-pro.translateViToEn",
+        "title": "MD Editor Pro: VN to EN"
+      },
+      {
+        "command": "md-editor-pro.translateEnToVi",
+        "title": "MD Editor Pro: EN to VN"
+      },
+      {
+        "command": "md-editor-pro.translateViToJa",
+        "title": "MD Editor Pro: VN to JP"
+      },
+      {
+        "command": "md-editor-pro.translateJaToVi",
+        "title": "MD Editor Pro: JP to VN"
+      },
+      {
+        "command": "md-editor-pro.translateEnToJa",
+        "title": "MD Editor Pro: EN to JP"
+      },
+      {
+        "command": "md-editor-pro.translateJaToEn",
+        "title": "MD Editor Pro: JP to EN"
+      },
+      {
+        "command": "md-editor-pro.exportPdfFile",
+        "title": "MD Editor Pro: Export PDF (Current File)"
+      },
+      {
+        "command": "md-editor-pro.exportPdfFolder",
+        "title": "MD Editor Pro: Export PDF (Folder)"
+      },
+      {
+        "command": "md-editor-pro.exportHtmlFile",
+        "title": "MD Editor Pro: Export HTML (Current File)"
+      },
+      {
+        "command": "md-editor-pro.exportHtmlFolder",
+        "title": "MD Editor Pro: Export HTML (Folder)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "1.95.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.27.2",
+    "eslint": "^9.39.2",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.52.0"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "puppeteer-core": "^24.34.0"
+  }
+}
