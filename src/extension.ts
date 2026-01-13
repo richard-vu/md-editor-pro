@@ -2,21 +2,15 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { 
-	translateVietnameseToEnglish, 
-	translateEnglishToVietnamese,
-	translateVietnameseToJapanese,
-	translateJapaneseToVietnamese,
-	translateEnglishToJapanese,
-	translateJapaneseToEnglish
-} from './translate/commands';
-import { 
-	exportPdfFromCurrentFile, 
-	exportPdfFromFolder 
-} from './export/pdfExport';
-import { 
-	exportHtmlFromCurrentFile, 
-	exportHtmlFromFolder 
-} from './export/htmlExport';
+	translateText_command,
+	translateToEnglish,
+	translateToVietnamese,
+	translateToJapanese,
+	exportPdfFromCurrentFile,
+	exportPdfFromFolder,
+	exportHtmlFromCurrentFile,
+	exportHtmlFromFolder
+} from './commands';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -36,12 +30,10 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	// Register translate commands
-	const translateViToEn = vscode.commands.registerCommand('md-editor-pro.translateViToEn', translateVietnameseToEnglish);
-	const translateEnToVi = vscode.commands.registerCommand('md-editor-pro.translateEnToVi', translateEnglishToVietnamese);
-	const translateViToJa = vscode.commands.registerCommand('md-editor-pro.translateViToJa', translateVietnameseToJapanese);
-	const translateJaToVi = vscode.commands.registerCommand('md-editor-pro.translateJaToVi', translateJapaneseToVietnamese);
-	const translateEnToJa = vscode.commands.registerCommand('md-editor-pro.translateEnToJa', translateEnglishToJapanese);
-	const translateJaToEn = vscode.commands.registerCommand('md-editor-pro.translateJaToEn', translateJapaneseToEnglish);
+	const translateCommand = vscode.commands.registerCommand('md-editor-pro.translate', translateText_command);
+	const translateToEn = vscode.commands.registerCommand('md-editor-pro.translateToEn', translateToEnglish);
+	const translateToVi = vscode.commands.registerCommand('md-editor-pro.translateToVi', translateToVietnamese);
+	const translateToJa = vscode.commands.registerCommand('md-editor-pro.translateToJa', translateToJapanese);
 
 	// Register export commands
 	const exportPdfFile = vscode.commands.registerCommand('md-editor-pro.exportPdfFile', exportPdfFromCurrentFile);
@@ -51,12 +43,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		disposable, 
-		translateViToEn, 
-		translateEnToVi,
-		translateViToJa,
-		translateJaToVi,
-		translateEnToJa,
-		translateJaToEn,
+		translateCommand,
+		translateToEn, 
+		translateToVi,
+		translateToJa,
 		exportPdfFile,
 		exportPdfFolder,
 		exportHtmlFile,
