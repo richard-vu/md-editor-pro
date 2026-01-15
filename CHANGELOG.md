@@ -4,6 +4,39 @@ All notable changes to the "md-editor-pro" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.4] - 2026-01-16
+
+### Added
+- 🎉 **Fullscreen Mode**: New distraction-free WYSIWYG editor without preview pane
+  - Perfect for focused writing workflows
+  - Access via "MD Editor Pro (Fullscreen)" in "Reopen Editor With..."
+  - All formatting toolbar features available
+  - Larger editing area with comfortable padding
+- 🎨 **Tailwind CSS v4 Integration**: Complete migration to Tailwind CSS
+  - Modern utility-first CSS framework
+  - Better performance and smaller bundle size
+  - Improved maintainability and customization
+  - PostCSS build pipeline for CSS processing
+
+### Fixed
+- 🐛 Fixed "Required DOM elements not found" error in fullscreen mode
+- ⚡ Editor initialization now properly detects fullscreen vs split view mode
+- 🎯 Preview rendering only triggers when preview pane exists
+- 🔧 Resizer and scroll sync only setup when needed
+
+### Improved
+- 🏗️ Split view and fullscreen modes now work seamlessly side-by-side
+- 📝 Enhanced editor layout and styling with Tailwind utilities
+- 🎭 Better separation of concerns between editor modes
+- 💅 Cleaner CSS architecture with component layers
+
+### Technical
+- Added `build:css` script for CSS compilation
+- Added `watch:css` script for CSS development
+- Updated build process to include automatic CSS compilation
+- Configured PostCSS with Tailwind CSS v4 plugin
+- Added tailwind.config.js for theme customization
+
 ## [0.0.3] - 2026-01-15
 
 ### Added

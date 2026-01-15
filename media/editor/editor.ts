@@ -200,12 +200,21 @@ interface EditorAPI {
         editorPane = document.getElementById('editor-pane');
         previewPane = document.getElementById('preview-pane');
 
-        if (!editor || !preview || !resizer || !editorPane || !previewPane) {
-            console.error('Required DOM elements not found');
+        // Check if this is fullscreen mode (no preview elements)
+        const isFullscreenMode = document.body.classList.contains('fullscreen-mode');
+
+        if (!editor || !editorPane) {
+            console.error('Required DOM elements not found (editor or editor-pane missing)');
             return;
         }
 
-        // Initialize markdown-it
+        // In split view mode, all elements are required
+        if (!isFullscreenMode && (!preview || !resizer || !previewPane)) {
+            console.error('Required DOM elements not found for split view mode');
+            return;
+        }
+
+        // Initialize markdown-it (needed for preview rendering)
         if (typeof (window as any).markdownit !== 'undefined') {
             markdownIt = (window as any).markdownit({
                 html: true,
@@ -245,11 +254,15 @@ interface EditorAPI {
         // Listen for editor input
         editor.addEventListener('input', handleEditorInput);
 
-        // Listen for editor scroll (for sync scrolling)
-        editor.addEventListener('scroll', handleEditorScroll);
+        // Listen for editor scroll (for sync scrolling in split view)
+        if (previewPane) {
+            editor.addEventListener('scroll', handleEditorScroll);
+        }
 
-        // Setup resizer
-        setupResizer();
+        // Setup resizer (only in split view mode)
+        if (resizer) {
+            setupResizer();
+        }
 
         // Listen for messages from extension
         window.addEventListener('message', handleExtensionMessage);
@@ -276,8 +289,10 @@ interface EditorAPI {
                 content: content,
             });
 
-            // Update preview
-            renderPreview(content);
+            // Update preview (only in split view mode)
+            if (preview) {
+                renderPreview(content);
+            }
         }, DEBOUNCE_DELAY);
     }
 
@@ -306,7 +321,10 @@ interface EditorAPI {
                 // Update editor content
                 if (editor) {
                     editor.value = message.content;
-                    renderPreview(message.content);
+                    // Only render preview in split view mode
+                    if (preview) {
+                        renderPreview(message.content);
+                    }
                 }
                 break;
 

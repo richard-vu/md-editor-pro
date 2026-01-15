@@ -20,15 +20,16 @@
 
 ### 📝 WYSIWYG Markdown Editor
 - **Visual editing interface** with toolbar for formatting
-- **Live preview** alongside your Markdown source
+- **Two editing modes**:
+  - **Split View**: Live preview alongside your Markdown source
+  - **Fullscreen Mode**: Distraction-free editor without preview
 - **Rich formatting options**: headings, bold, italic, strikethrough, highlight
 - **Code blocks** with inline code and fenced code blocks
 - **Lists**: bullet lists, numbered lists, and task lists (checkboxes)
 - **Insert elements**: links, images, and tables
 - **Quotes**: blockquote support
 - **Emoji picker** with categorized emojis (smileys, hearts, gestures, symbols)
-- **Split-pane view** with resizable editor and preview
-- **Mermaid diagram** rendering in real-time
+- **Mermaid diagram** rendering in real-time (in split view mode)
 
 ### 📄 Export to PDF
 - **Export current file to PDF**: Convert the current Markdown file to PDF and save it in the same directory
@@ -85,15 +86,38 @@ Or install from the [VS Code Marketplace](https://marketplace.visualstudio.com/i
 
 ### WYSIWYG Editor
 
+MD Editor Pro offers two WYSIWYG editing modes to suit your workflow:
+
+#### Split View Mode (with Live Preview)
+
 1. **Open a Markdown file** (`.md`)
 2. **Right-click** on the editor tab
 3. Select **"Reopen Editor With..."**
 4. Choose **"MD Editor Pro (WYSIWYG)"**
 
-Or set MD Editor Pro as the default editor for Markdown files:
+This mode provides a split-pane view with:
+- Left: Markdown editor with toolbar
+- Right: Live preview of rendered content
+- Resizable panes for customized layout
+- Real-time Mermaid diagram rendering
+
+#### Fullscreen Mode (Distraction-Free)
+
+1. **Open a Markdown file** (`.md`)
+2. **Right-click** on the editor tab
+3. Select **"Reopen Editor With..."**
+4. Choose **"MD Editor Pro (Fullscreen)"**
+
+This mode provides a fullscreen editor with:
+- No preview pane for maximum focus
+- Full toolbar with all formatting options
+- Larger editing area
+- Perfect for writing-focused workflows
+
+**Set as Default Editor:**
 - Right-click any `.md` file in Explorer
 - Select **"Open With..."**
-- Choose **"MD Editor Pro (WYSIWYG)"**
+- Choose **"MD Editor Pro (WYSIWYG)"** or **"MD Editor Pro (Fullscreen)"**
 - Check **"Set as default"**
 
 #### Toolbar Features
@@ -189,7 +213,21 @@ Report issues on [GitHub Issues](https://github.com/richard-vu/md-editor-pro/iss
 
 ## 📝 Release Notes
 
-### Version 0.0.3 (Current)
+### Version 0.0.4 (Current)
+
+**New Features:**
+- 🎉 **Fullscreen Mode** - Distraction-free WYSIWYG editor without preview pane
+- 🎨 **Tailwind CSS v4** - Complete migration to modern utility-first CSS framework
+- 📱 **Dual Editor Modes** - Choose between split view or fullscreen based on your workflow
+
+**Improvements:**
+- 🐛 Fixed DOM element detection issues in different editor modes
+- ⚡ Optimized editor initialization and performance
+- 💅 Enhanced styling with Tailwind utility classes
+- 🏗️ Better CSS architecture with component layers
+- 🔧 Improved build process with PostCSS pipeline
+
+### Version 0.0.3
 
 **New Features:**
 - ✨ WYSIWYG Markdown editor with rich toolbar
@@ -225,9 +263,12 @@ Initial release:
 
 1. **Quick formatting**: Use keyboard shortcuts (Ctrl+B for bold, Ctrl+I for italic)
 2. **Emoji search**: Hover over emojis in the picker to see their names
-3. **Split view**: Drag the resizer between editor and preview to adjust sizes
-4. **Export shortcut**: Use the toolbar export button for quick PDF generation
-5. **Task lists**: Use `- [ ]` for unchecked and `- [x]` for checked items
+3. **Choose your mode**: 
+   - Use **Split View** for content that needs live preview (diagrams, tables)
+   - Use **Fullscreen** for focused writing without distractions
+4. **Split view resizing**: Drag the resizer between editor and preview to adjust sizes
+5. **Export shortcut**: Use the toolbar export button for quick PDF generation
+6. **Task lists**: Use `- [ ]` for unchecked and `- [x]` for checked items
 
 ---
 

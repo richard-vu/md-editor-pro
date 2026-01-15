@@ -1,0 +1,379 @@
+/* Tailwind CSS v4 - Base styles */
+@import "tailwindcss";
+
+/* VS Code Theme Variables */
+:root {
+	--editor-bg: var(--vscode-editor-background);
+	--editor-fg: var(--vscode-editor-foreground);
+	--editor-selection-bg: var(--vscode-editor-selectionBackground);
+	--editor-line-highlight: var(--vscode-editor-lineHighlightBackground);
+
+	--toolbar-bg: rgba(255, 255, 255, 0.05);
+	--toolbar-hover: rgba(255, 255, 255, 0.1);
+	--toolbar-active: rgba(255, 255, 255, 0.15);
+
+	--border-color: var(--vscode-panel-border);
+	--divider-color: var(--vscode-widget-border);
+
+	--preview-bg: var(--vscode-editor-background);
+	--preview-fg: var(--vscode-editor-foreground);
+	--preview-link: var(--vscode-textLink-foreground);
+
+	--resizer-width: 4px;
+	--toolbar-height: 48px;
+}
+
+/* Light Theme Overrides */
+.theme-light {
+	--toolbar-bg: rgba(0, 0, 0, 0.03);
+	--toolbar-hover: rgba(0, 0, 0, 0.08);
+	--toolbar-active: rgba(0, 0, 0, 0.12);
+}
+
+/* Custom Scrollbar */
+@layer components {
+	::-webkit-scrollbar {
+		@apply w-3 h-3;
+	}
+
+	::-webkit-scrollbar-track {
+		background: var(--vscode-scrollbarSlider-background);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: var(--vscode-scrollbarSlider-hoverBackground);
+		@apply rounded-md;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--vscode-scrollbarSlider-activeBackground);
+	}
+}
+
+/* Markdown Preview Content Styles */
+@layer components {
+	.preview-content h1,
+	.preview-content h2,
+	.preview-content h3,
+	.preview-content h4,
+	.preview-content h5,
+	.preview-content h6 {
+		@apply mt-6 mb-4 font-semibold leading-tight;
+	}
+
+	.preview-content h1 {
+		@apply text-3xl pb-2;
+		border-bottom: 1px solid var(--border-color);
+	}
+
+	.preview-content h2 {
+		@apply text-2xl pb-1.5;
+		border-bottom: 1px solid var(--border-color);
+	}
+
+	.preview-content h3 {
+		@apply text-xl;
+	}
+
+	.preview-content h4 {
+		@apply text-lg;
+	}
+
+	.preview-content h5,
+	.preview-content h6 {
+		@apply text-base;
+	}
+
+	.preview-content p {
+		@apply mb-4;
+	}
+
+	.preview-content a {
+		color: var(--preview-link);
+		@apply no-underline hover:underline;
+	}
+
+	.preview-content ul,
+	.preview-content ol {
+		@apply mb-4 pl-8;
+	}
+
+	.preview-content li {
+		@apply mb-1;
+	}
+
+	.preview-content blockquote {
+		@apply my-4 px-4;
+		border-left: 4px solid var(--border-color);
+		color: var(--vscode-descriptionForeground);
+	}
+
+	.preview-content code {
+		@apply px-1.5 py-0.5 rounded text-sm;
+		font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+		background: var(--vscode-textCodeBlock-background);
+	}
+
+	.preview-content pre {
+		@apply my-4 p-4 rounded-md overflow-x-auto;
+		background: var(--vscode-textCodeBlock-background);
+	}
+
+	.preview-content pre code {
+		@apply bg-transparent p-0;
+		font-size: 0.85em;
+	}
+
+	.preview-content table {
+		@apply w-full my-4 block overflow-x-auto;
+		border-collapse: collapse;
+	}
+
+	.preview-content table th,
+	.preview-content table td {
+		@apply px-3 py-2 text-left;
+		border: 1px solid var(--border-color);
+	}
+
+	.preview-content table th {
+		@apply font-semibold;
+		background: var(--vscode-editor-lineHighlightBackground);
+	}
+
+	.preview-content table tr:hover {
+		background: var(--vscode-list-hoverBackground);
+	}
+
+	.preview-content img {
+		@apply max-w-full h-auto block my-4;
+	}
+
+	.preview-content hr {
+		@apply my-6;
+		border: none;
+		border-top: 1px solid var(--border-color);
+	}
+
+	.preview-content .mermaid {
+		@apply my-4 text-center bg-transparent;
+	}
+}
+
+/* Base Layout Styles */
+@layer base {
+	* {
+		@apply m-0 p-0 box-border;
+	}
+
+	body {
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+		background: var(--editor-bg);
+		color: var(--editor-fg);
+		@apply overflow-hidden w-screen h-screen flex flex-col;
+	}
+}
+
+/* Toolbar Styles */
+@layer components {
+	.toolbar {
+		height: var(--toolbar-height);
+		background: var(--toolbar-bg);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid var(--border-color);
+		@apply flex items-center px-3 gap-2 flex-shrink-0 relative z-[100] overflow-visible;
+	}
+
+	.toolbar-group {
+		@apply flex items-center gap-1;
+	}
+
+	.toolbar-btn {
+		@apply w-8 h-8 flex items-center justify-center bg-transparent border-none rounded cursor-pointer transition-all duration-150;
+		color: var(--editor-fg);
+	}
+
+	.toolbar-btn:hover {
+		background: var(--toolbar-hover);
+	}
+
+	.toolbar-btn:active {
+		background: var(--toolbar-active);
+	}
+
+	.toolbar-btn svg {
+		@apply w-4 h-4 pointer-events-none;
+	}
+
+	.toolbar-divider {
+		@apply w-px h-6 mx-1;
+		background: var(--divider-color);
+	}
+
+	/* Dropdown Styles */
+	.toolbar-dropdown {
+		@apply relative inline-block overflow-visible;
+	}
+
+	.toolbar-dropdown .toolbar-btn {
+		@apply w-auto px-2 min-w-[32px] inline-flex gap-0.5;
+	}
+
+	.toolbar-dropdown-menu {
+		@apply hidden absolute top-full left-0 border rounded-lg shadow-2xl z-[10001] min-w-[180px] mt-1.5 p-2 opacity-0 overflow-visible;
+		background: var(--vscode-dropdown-background);
+		border-color: var(--vscode-dropdown-border);
+		backdrop-filter: blur(10px);
+		transform: translateY(-10px);
+		transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.toolbar-dropdown-menu.show {
+		@apply block opacity-100;
+		transform: translateY(0);
+	}
+
+	.toolbar-dropdown-item {
+		@apply flex justify-between items-center w-full px-3.5 py-2.5 bg-transparent border-none rounded-md cursor-pointer text-left text-[13px] font-medium transition-all duration-150 relative;
+		color: var(--vscode-dropdown-foreground);
+	}
+
+	.toolbar-dropdown-item::before {
+		@apply content-[''] absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-0 rounded-r;
+		background: var(--vscode-focusBorder);
+		transition: height 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.toolbar-dropdown-item:hover {
+		background: var(--vscode-list-hoverBackground);
+		@apply pl-[18px];
+	}
+
+	.toolbar-dropdown-item:hover::before {
+		@apply h-[70%];
+	}
+
+	.toolbar-dropdown-item:active {
+		background: var(--vscode-list-activeSelectionBackground);
+		color: var(--vscode-list-activeSelectionForeground);
+		@apply scale-[0.98];
+	}
+
+	.dropdown-item-text {
+		@apply flex-1;
+	}
+
+	.dropdown-item-shortcut {
+		@apply text-[11px] opacity-60 ml-4;
+		font-family: 'Consolas', monospace;
+	}
+
+	/* Emoji Menu */
+	#emoji-menu {
+		@apply min-w-[280px] max-h-80 overflow-y-auto;
+	}
+
+	.emoji-grid {
+		@apply grid grid-cols-8 gap-1 p-1;
+	}
+
+	.emoji-item {
+		@apply w-8 h-8 flex items-center justify-center bg-transparent border-none rounded-md cursor-pointer text-xl transition-all duration-150 relative;
+	}
+
+	.emoji-item:hover {
+		background: var(--vscode-list-hoverBackground);
+		@apply scale-125 z-10;
+	}
+
+	.emoji-item:active {
+		@apply scale-110;
+	}
+
+	.emoji-category {
+		@apply px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide mt-1;
+		color: var(--vscode-descriptionForeground);
+		border-top: 1px solid var(--vscode-widget-border);
+	}
+
+	.emoji-category:first-child {
+		@apply border-t-0 mt-0;
+	}
+
+	/* Split Container */
+	.split-container {
+		@apply flex flex-1 overflow-hidden;
+		height: calc(100vh - var(--toolbar-height));
+	}
+
+	.pane {
+		@apply flex-1 overflow-auto relative;
+	}
+
+	.editor-pane {
+		@apply min-w-[200px];
+	}
+
+	.preview-pane {
+		@apply min-w-[200px];
+		background: var(--preview-bg);
+	}
+
+	/* Markdown Editor Textarea */
+	#markdown-editor {
+		@apply w-full h-full border-none outline-none resize-none p-5 leading-relaxed;
+		font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+		font-size: 14px;
+		background: var(--editor-bg);
+		color: var(--editor-fg);
+		tab-size: 4;
+	}
+
+	#markdown-editor::selection {
+		background: var(--editor-selection-bg);
+	}
+
+	/* Resizer */
+	.resizer {
+		width: var(--resizer-width);
+		@apply cursor-col-resize flex-shrink-0 relative transition-all duration-150;
+		background: var(--border-color);
+	}
+
+	.resizer:hover {
+		background: var(--vscode-focusBorder);
+	}
+
+	/* Preview Content */
+	.preview-content {
+		@apply px-10 py-5 max-w-[900px] mx-auto leading-relaxed break-words;
+		color: var(--preview-fg);
+	}
+
+	/* Loading State */
+	.loading {
+		@apply flex items-center justify-center h-full text-sm;
+		color: var(--vscode-descriptionForeground);
+	}
+
+	/* Fullscreen Mode */
+	.fullscreen-mode .split-container {
+		@apply hidden;
+	}
+
+	.fullscreen-container {
+		@apply hidden flex-1 overflow-hidden;
+		height: calc(100vh - var(--toolbar-height));
+	}
+
+	.fullscreen-mode .fullscreen-container {
+		@apply flex;
+	}
+
+	.fullscreen-pane {
+		@apply w-full h-full flex-1;
+	}
+
+	.fullscreen-mode #markdown-editor {
+		@apply w-full h-full px-10 py-10 text-[15px] leading-[1.7];
+	}
+}

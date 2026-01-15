@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { MarkdownEditorProvider } from './editor/MarkdownEditorProvider';
+import { MarkdownEditorProviderFullscreen } from './editor/MarkdownEditorProviderFullscreen';
 import {
 	translateText_command,
 	translateToEnglish,
@@ -21,9 +22,13 @@ export function activate(context: vscode.ExtensionContext) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "md-editor-pro" is now active!');
 
-	// Register Custom Editor Provider for WYSIWYG mode
+	// Register Custom Editor Provider for WYSIWYG mode (split view)
 	const editorProvider = MarkdownEditorProvider.register(context);
 	context.subscriptions.push(editorProvider);
+
+	// Register Custom Editor Provider for WYSIWYG mode (fullscreen, no split)
+	const fullscreenEditorProvider = MarkdownEditorProviderFullscreen.register(context);
+	context.subscriptions.push(fullscreenEditorProvider);
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
