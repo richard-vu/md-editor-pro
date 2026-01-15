@@ -4,3 +4,7 @@ node_modules
 .vscode-test/
 *.vsix
 workplace/
+
+# Compiled JavaScript from TypeScript
+media/editor/*.js
+media/editor/*.js.map

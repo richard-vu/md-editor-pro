@@ -1,7 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { 
+import { MarkdownEditorProvider } from './editor/MarkdownEditorProvider';
+import {
 	translateText_command,
 	translateToEnglish,
 	translateToVietnamese,
@@ -19,6 +20,10 @@ export function activate(context: vscode.ExtensionContext) {
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "md-editor-pro" is now active!');
+
+	// Register Custom Editor Provider for WYSIWYG mode
+	const editorProvider = MarkdownEditorProvider.register(context);
+	context.subscriptions.push(editorProvider);
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
@@ -42,9 +47,9 @@ export function activate(context: vscode.ExtensionContext) {
 	const exportHtmlFolder = vscode.commands.registerCommand('md-editor-pro.exportHtmlFolder', exportHtmlFromFolder);
 
 	context.subscriptions.push(
-		disposable, 
+		disposable,
 		translateCommand,
-		translateToEn, 
+		translateToEn,
 		translateToVi,
 		translateToJa,
 		exportPdfFile,
@@ -55,4 +60,4 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
