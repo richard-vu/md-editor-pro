@@ -4,6 +4,21 @@ All notable changes to the "md-editor-pro" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.5] - 2026-01-18
+
+### Fixed
+- 🐛 Fixed bullet list and numbered list not displaying correctly in WYSIWYG mode
+  - Added `list-style-type: disc` for unordered lists
+  - Added `list-style-type: decimal` for ordered lists
+  - Added `display: list-item` to ensure proper list item rendering
+
+### Improved
+- ✨ Enhanced list styling with proper nested list support
+  - Unordered lists: disc → circle → square for nested levels
+  - Ordered lists: decimal → lower-alpha → lower-roman for nested levels
+- 📝 Added task list styling with proper checkbox display
+- 🎨 Better visual hierarchy for multi-level lists
+
 ## [0.0.4] - 2026-01-16
 
 ### Added

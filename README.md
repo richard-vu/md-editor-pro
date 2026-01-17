@@ -1,18 +1,5 @@
 # MD Editor Pro
-
-<p align="center">
-  <img src="icon.png" alt="MD Editor Pro" width="128" height="128">
-</p>
-
-<p align="center">
-  <strong>A powerful Markdown editor for VS Code with WYSIWYG editing, advanced export capabilities, and translation features</strong>
-</p>
-
-<p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=luong-vu.md-editor-pro"><img src="https://img.shields.io/visual-studio-marketplace/v/luong-vu.md-editor-pro?style=flat-square&label=VS%20Marketplace&logo=visual-studio-code" alt="Version"></a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=luong-vu.md-editor-pro"><img src="https://img.shields.io/visual-studio-marketplace/d/luong-vu.md-editor-pro?style=flat-square" alt="Downloads"></a>
-  <a href="https://github.com/richard-vu/md-editor-pro"><img src="https://img.shields.io/github/license/richard-vu/md-editor-pro?style=flat-square" alt="License"></a>
-</p>
+A powerful Markdown editor for VS Code with WYSIWYG editing, advanced export capabilities, and translation features
 
 ---
 

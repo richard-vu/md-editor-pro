@@ -22,9 +22,26 @@ function hello() {
 
 ### 4. Lists
 
+**Bullet List (Unordered):**
 - Item 1
 - Item 2  
 - Item 3
+  - Nested Item 3.1
+  - Nested Item 3.2
+    - Deep Nested Item 3.2.1
+
+**Numbered List (Ordered):**
+1. First item
+2. Second item
+3. Third item
+   1. Nested item 3.1
+   2. Nested item 3.2
+      1. Deep nested item 3.2.1
+
+**Task List:**
+- [ ] Task 1 (incomplete)
+- [x] Task 2 (complete)
+- [ ] Task 3 (incomplete)
 
 ### 5. Tables
 

@@ -98,8 +98,44 @@
 		@apply mb-4 pl-8;
 	}
 
+	.preview-content ul {
+		list-style-type: disc;
+	}
+
+	.preview-content ol {
+		list-style-type: decimal;
+	}
+
+	/* Nested list styles */
+	.preview-content ul ul {
+		list-style-type: circle;
+	}
+
+	.preview-content ul ul ul {
+		list-style-type: square;
+	}
+
+	.preview-content ol ol {
+		list-style-type: lower-alpha;
+	}
+
+	.preview-content ol ol ol {
+		list-style-type: lower-roman;
+	}
+
 	.preview-content li {
 		@apply mb-1;
+		display: list-item;
+	}
+
+	/* Task list styles */
+	.preview-content li.task-list-item {
+		list-style-type: none;
+		@apply relative;
+	}
+
+	.preview-content li.task-list-item input[type="checkbox"] {
+		@apply mr-2;
 	}
 
 	.preview-content blockquote {

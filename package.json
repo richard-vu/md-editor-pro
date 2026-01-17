@@ -3,7 +3,7 @@
   "displayName": "MD Editor Pro",
   "description": "A powerful Markdown editor with PDF/HTML export, multi-language translation (Vietnamese, English, Japanese), and Mermaid diagram support",
   "publisher": "luong-vu",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "icon": "icon.png",
   "repository": {
@@ -16,6 +16,10 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
+    ],
+    "ignoredBuiltDependencies": [
+      "@vscode/vsce-sign",
+      "keytar"
     ]
   },
   "categories": [
