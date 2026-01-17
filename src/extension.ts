@@ -11,7 +11,9 @@ import {
 	exportPdfFromCurrentFile,
 	exportPdfFromFolder,
 	exportHtmlFromCurrentFile,
-	exportHtmlFromFolder
+	exportHtmlFromFolder,
+	openHtmlInBrowser,
+	openFileInBrowser
 } from './commands';
 
 // This method is called when your extension is activated
@@ -51,6 +53,10 @@ export function activate(context: vscode.ExtensionContext) {
 	const exportHtmlFile = vscode.commands.registerCommand('md-editor-pro.exportHtmlFile', exportHtmlFromCurrentFile);
 	const exportHtmlFolder = vscode.commands.registerCommand('md-editor-pro.exportHtmlFolder', exportHtmlFromFolder);
 
+	// Register browser commands
+	const openHtmlBrowser = vscode.commands.registerCommand('md-editor-pro.openHtmlInBrowser', openHtmlInBrowser);
+	const openInBrowser = vscode.commands.registerCommand('md-editor-pro.openInBrowser', openFileInBrowser);
+
 	context.subscriptions.push(
 		disposable,
 		translateCommand,
@@ -60,7 +66,9 @@ export function activate(context: vscode.ExtensionContext) {
 		exportPdfFile,
 		exportPdfFolder,
 		exportHtmlFile,
-		exportHtmlFolder
+		exportHtmlFolder,
+		openHtmlBrowser,
+		openInBrowser
 	);
 }
 

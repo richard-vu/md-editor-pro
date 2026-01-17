@@ -4,6 +4,22 @@ All notable changes to the "md-editor-pro" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.6] - 2026-01-18
+
+### Added
+- 🌐 **Open HTML in Browser**: New feature to open HTML files in default browser
+  - Right-click HTML files in Explorer → "Open HTML in Browser"
+  - Context menu in editor title bar for open HTML files
+  - Command Palette: "MD Editor Pro: Open HTML in Browser"
+  - Works with both .html and .htm files
+  - Automatically opens in system default browser
+
+### Technical
+- Added new command: `md-editor-pro.openHtmlInBrowser`
+- Added new command: `md-editor-pro.openInBrowser`
+- Added context menu integration for HTML files in Explorer
+- Added editor title context menu for HTML files
+
 ## [0.0.5] - 2026-01-18
 
 ### Fixed

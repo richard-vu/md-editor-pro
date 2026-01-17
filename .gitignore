@@ -5,6 +5,8 @@ node_modules
 *.vsix
 workplace/
 
-# Compiled JavaScript from TypeScript
+# Compiled JavaScript and CSS from TypeScript and Tailwind
 media/editor/*.js
 media/editor/*.js.map
+media/editor/styles.css
+/*.html

@@ -3,7 +3,7 @@
   "displayName": "MD Editor Pro",
   "description": "A powerful Markdown editor with PDF/HTML export, multi-language translation (Vietnamese, English, Japanese), and Mermaid diagram support",
   "publisher": "luong-vu",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "icon": "icon.png",
   "repository": {
@@ -86,8 +86,37 @@
       {
         "command": "md-editor-pro.exportHtmlFolder",
         "title": "MD Editor Pro: Export HTML (Folder)"
+      },
+      {
+        "command": "md-editor-pro.openHtmlInBrowser",
+        "title": "MD Editor Pro: Open HTML in Browser"
+      },
+      {
+        "command": "md-editor-pro.openInBrowser",
+        "title": "MD Editor Pro: Open in Browser"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "md-editor-pro.openHtmlInBrowser",
+          "when": "resourceExtname == .html || resourceExtname == .htm",
+          "group": "navigation@1"
+        },
+        {
+          "command": "md-editor-pro.openInBrowser",
+          "when": "resourceExtname == .html || resourceExtname == .htm",
+          "group": "z_commands"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "md-editor-pro.openHtmlInBrowser",
+          "when": "resourceExtname == .html || resourceExtname == .htm",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",

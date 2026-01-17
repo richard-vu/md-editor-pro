@@ -21,3 +21,9 @@ export {
     exportHtmlFromCurrentFile,
     exportHtmlFromFolder
 } from '../core/htmlExporter';
+
+// Export browser commands
+export {
+    openHtmlInBrowser,
+    openFileInBrowser
+} from './openInBrowser';
